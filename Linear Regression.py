@@ -1,44 +1,100 @@
-# a simple linear regression program which predicts the price of a house based on its size
+# Author: Rambod Azimi
+# May 2023
+
+"""
+Linear Regression (supervised learning algorithm) using Gradient Descent and Cost Function in Python
+
+This program will make use of a simple dataset consisting of one input feature variable (house size)
+and one output target variable (house price). Then, it finds a function f = wx+b which fits the datapoints
+using Gradient Descent algorithm.
+Finally, we check the function with cost function to see how well did the function fits the data
+
+I decided to use numpy library in Python because it has many built-in methods to deal with scientific computation
+in this program as well as matplotlib to plot the results in Python
+"""
+
+
+# importing the python libraries that we need in this program
 import numpy as np
 import matplotlib.pyplot as plt
-
-# creating our sample dataset with 2 entries
-x_trains = np.array([1, 2]) # house size
-y_trains = np.array([300, 500]) # house price
-m = x_trains.shape[0] # number of training examples
-
-# f = wx + b (w and b are constants). The main goal of linear regression is to find a best fit line,
-# which has the mentioned equation
-
-# setting w and b to some values (actually the hardest part of linear regression is to find these constants!)
-w = 200
-b = 100
-# we could use cost function (squared error cost function) to see how well the function f fits the datapoints
-f = np.zeros(m)
-
-# go over each data point and find the equation
-for i in range(m):
-    f[i] = w*x_trains[i] + b
+import math, copy
 
 
-# Now, let's compute the cost function to see how well does the calculated function f response
-# Note that lower cost function means we have a better function f which fits the dataset
-sum = 0
-for i in range(m):
-    sum += (f[i] - y_trains[i])**2
+# a function which calculates the squared error cost function to see how well did the function fit the data
+def compute_cost_function(x, y, w, b):
+    sum = 0
+    m = x.shape[0] # size of the dataset
+    for i in range(m): # iterate over each element and adds the calculated value to the variable sum
+        sum += (w * x[i] + b - y[i]) ** 2
 
-sum /= (2*m)
-
-print(f"The value of the cost function is: {sum}")
-
-
-# plotting the result
-plt.plot(x_trains, f, c='b', label="Our prediction")
-plt.scatter(x_trains, y_trains, marker='x', c='r', label="Actual values")
-plt.title("Housing prices")
-plt.xlabel(f"Size\nCost function: {sum}")
-plt.ylabel("Price")
-plt.legend()
-plt.show()
+    sum /= (2*m)
+    return sum
 
 
+def compute_gradient_descent(x, y, w, b):
+    m = x.shape[0] # size of the dataset
+    dj_dw = 0
+    dj_db = 0
+
+    for i in range(m):
+        f = x[i] * w + b
+        # storing the result in temp variables befcause both w and b need to be upodated simultaneously
+        dj_dw_temp = f - y[i] * x[i]
+        dj_db_temp = f - y[i]
+
+        # now, storing the calculated values to their actual variable at the same time
+        dj_dw = dj_dw_temp
+        dj_db = dj_db_temp
+
+    # divide by m at the end
+    dj_dw /= m
+    dj_db /= m
+
+    return dj_dw, dj_db # tuple
+
+
+def gradient_descent(x, y, w_in, b_in, alpha, iters):
+
+    w = w_in
+    b = b_in
+    
+    for i in range(iters): # repeaqt the same process for a specified number of times if not convergent
+        dj_dw, dj_db = compute_gradient_descent(x, y, w, b)
+
+        # update the parameters w and b
+        w = w - (alpha * dj_dw)
+        b = b - (alpha * dj_db)
+
+        sum = compute_cost_function(x, y, w, b)
+        print(f"The value of the cost function is: {sum}")
+
+
+# Now that we implemented the cost function and gradient descent algorithms above, it's time to
+# complete the main function
+
+def main():
+    print("This program uses linear regression to predict the price of a house based on a given training set")
+    print("Author: Rambod Azimi | May 2023")
+
+    
+    # defining our sample dataset
+    x_train = np.array([1.0, 2.0]) # features (input)
+    y_train = np.array([300.0, 500.0]) # targets (output)
+    m = x_train.shape[0] # size of the dataset
+
+
+    print("\nThe given dataset:")
+
+    for i in range(m):
+        print(f"House size: {x_train[i]} \t House price: {y_train[i]}")
+
+
+    w_init = 0
+    b_init = 0
+    iterations = 100
+    alpha_value = 0.01
+    gradient_descent(x_train, y_train, w_init, b_init, alpha_value, iterations)
+
+
+if __name__ == "__main__":
+    main()
