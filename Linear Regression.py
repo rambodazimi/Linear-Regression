@@ -20,11 +20,25 @@ f = np.zeros(m)
 for i in range(m):
     f[i] = w*x_trains[i] + b
 
+
+# Now, let's compute the cost function to see how well does the calculated function f response
+# Note that lower cost function means we have a better function f which fits the dataset
+sum = 0
+for i in range(m):
+    sum += (f[i] - y_trains[i])**2
+
+sum /= (2*m)
+
+print(f"The value of the cost function is: {sum}")
+
+
 # plotting the result
 plt.plot(x_trains, f, c='b', label="Our prediction")
 plt.scatter(x_trains, y_trains, marker='x', c='r', label="Actual values")
 plt.title("Housing prices")
-plt.xlabel("Size")
+plt.xlabel(f"Size\nCost function: {sum}")
 plt.ylabel("Price")
 plt.legend()
 plt.show()
+
+
