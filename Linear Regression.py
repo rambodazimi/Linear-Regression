@@ -10,9 +10,10 @@ m = x_trains.shape[0] # number of training examples
 # f = wx + b (w and b are constants). The main goal of linear regression is to find a best fit line,
 # which has the mentioned equation
 
-# setting w and b to random values (actually the hardest part of linear regression is to find these constants!)
+# setting w and b to some values (actually the hardest part of linear regression is to find these constants!)
 w = 200
 b = 100
+# we could use cost function (squared error cost function) to see how well the function f fits the datapoints
 f = np.zeros(m)
 
 # go over each data point and find the equation
