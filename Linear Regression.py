@@ -39,12 +39,12 @@ def compute_gradient_descent(x, y, w, b):
     for i in range(m):
         f = x[i] * w + b
         # storing the result in temp variables befcause both w and b need to be upodated simultaneously
-        dj_dw_temp = f - y[i] * x[i]
+        dj_dw_temp = (f - y[i]) * x[i]
         dj_db_temp = f - y[i]
 
-        # now, storing the calculated values to their actual variable at the same time
-        dj_dw = dj_dw_temp
-        dj_db = dj_db_temp
+        # now, adding the calculated values to their actual variable at the same time
+        dj_dw += dj_dw_temp
+        dj_db += dj_db_temp
 
     # divide by m at the end
     dj_dw /= m
@@ -55,19 +55,19 @@ def compute_gradient_descent(x, y, w, b):
 
 def gradient_descent(x, y, w_in, b_in, alpha, iters):
 
-    w = w_in
     b = b_in
+    w = w_in
     
     for i in range(iters): # repeaqt the same process for a specified number of times if not convergent
         dj_dw, dj_db = compute_gradient_descent(x, y, w, b)
 
         # update the parameters w and b
-        w = w - (alpha * dj_dw)
         b = b - (alpha * dj_db)
+        w = w - (alpha * dj_dw)
 
         sum = compute_cost_function(x, y, w, b)
-        print(f"The value of the cost function is: {sum}")
 
+    return w, b, sum
 
 # Now that we implemented the cost function and gradient descent algorithms above, it's time to
 # complete the main function
@@ -78,8 +78,8 @@ def main():
 
     
     # defining our sample dataset
-    x_train = np.array([1.0, 2.0]) # features (input)
-    y_train = np.array([300.0, 500.0]) # targets (output)
+    x_train = np.array([1.0, 2.0, 3.0, 5.0, 7.5, 12.7, 0.2]) # features (input)
+    y_train = np.array([300.0, 500.0, 750.5, 1500.0, 1760.0, 3450.0, 50.0]) # targets (output)
     m = x_train.shape[0] # size of the dataset
 
 
@@ -88,13 +88,13 @@ def main():
     for i in range(m):
         print(f"House size: {x_train[i]} \t House price: {y_train[i]}")
 
-
     w_init = 0
     b_init = 0
-    iterations = 100
+    iterations = 10000
     alpha_value = 0.01
-    gradient_descent(x_train, y_train, w_init, b_init, alpha_value, iterations)
+    w, b, sum = gradient_descent(x_train, y_train, w_init, b_init, alpha_value, iterations)
 
+    print(f"w = {w}, b = {b}, cost function = {sum}")
 
 if __name__ == "__main__":
     main()
