@@ -1,7 +1,6 @@
 # supervised-machine-learning
-based on Coursera supervised machine learning course
 
-Within this repository, you will discover a comprehensive assortment of algorithms and implementations pertaining to the field of machine learning. These materials encompass a diverse range of topics, with particular emphasis on the following areas:
+Within this repository, you will find a comprehensive assortment of algorithms and implementations pertaining to the field of machine learning. These materials encompass a diverse range of topics, with particular emphasis on the following areas:
 
 Linear Regression Algorithm for a Single Feature Variable: This algorithm focuses on the estimation of relationships between a single independent variable and a dependent variable through linear regression techniques.
 
@@ -27,4 +26,4 @@ Logistic Regression and Classification: The algorithms and implementations encom
 
 Addressing Overfitting: Overfitting, a common challenge in machine learning, is addressed within this repository, offering strategies and techniques to mitigate its adverse effects on model performance.
 
-By perusing this repository, you will gain access to a wealth of knowledge and practical implementations of these machine learning concepts, aiding in your understanding and proficiency in this field.
+By perusing this repository, you will gain access to a practical implementations of these machine learning concepts.
