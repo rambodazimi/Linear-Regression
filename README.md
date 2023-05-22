@@ -1,4 +1,4 @@
-# supervised-machine-learning
+# Supervised Machine Learning: Regression
 
 Within this repository, you will find a comprehensive assortment of algorithms and implementations pertaining to the field of machine learning. These materials encompass a diverse range of topics, with particular emphasis on the following areas:
 
