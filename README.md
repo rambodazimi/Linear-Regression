@@ -27,3 +27,9 @@ Logistic Regression and Classification: The algorithms and implementations encom
 Addressing Overfitting: Overfitting, a common challenge in machine learning, is addressed within this repository, offering strategies and techniques to mitigate its adverse effects on model performance.
 
 By perusing this repository, you will gain access to a practical implementations of these machine learning concepts.
+
+https://i.ibb.co/p3QShXQ/Screenshot-2023-05-23-at-12-15-34-AM.png
+
+https://i.ibb.co/MBSVRPR/Screenshot-2023-05-23-at-12-16-07-AM.png
+
+https://i.ibb.co/6tFmp5M/3.png
