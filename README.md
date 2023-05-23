@@ -28,7 +28,8 @@ Addressing Overfitting: Overfitting, a common challenge in machine learning, is 
 
 By perusing this repository, you will gain access to a practical implementations of these machine learning concepts.
 
-<img> https://i.ibb.co/p3QShXQ/Screenshot-2023-05-23-at-12-15-34-AM.png
+![alt text](https://i.ibb.co/p3QShXQ/Screenshot-2023-05-23-at-12-15-34-AM.png)
+
 
 https://i.ibb.co/MBSVRPR/Screenshot-2023-05-23-at-12-16-07-AM.png
 
